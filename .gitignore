@@ -1,0 +1,16 @@
+# Compiled output
+build
+out
+.gradle
+
+# IDE files
+.idea
+*.iml
+*.ipr
+*.iws
+
+# Log files
+*.log
+
+# Local properties
+local.properties

@@ -1,0 +1,13 @@
+name: Kernel
+version: ${version}
+main: com.lightre.kernel.Kernel
+api-version: '1.21'
+authors: [ Lightre ]
+description: A core plugin providing essential commands and features for the server.
+commands:
+  heal:
+    description: Heals a player to full health.
+    usage: /<command> [player]
+  feed:
+    description: Fills a player's hunger bar to maximum.
+    usage: /<command> [player]

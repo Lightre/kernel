@@ -1,0 +1,37 @@
+name: Build and Release to Modrinth
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build_and_release:
+    name: Build & Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+
+      - name: Build with Gradle
+        run: ./gradlew build
+
+      - name: Publish to Modrinth
+        uses: kir-sh/mc-publish@v3
+        with:
+          modrinth-id: ${{ secrets.MODRINTH_PROJECT_ID }}
+          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+
+          name: "${{ project.name }} v${{ project.version }}"
+
+          files: "build/libs/*.jar"
+          game-versions: "1.21"
+          loaders: "spigot, paper"
+          version-type: "beta"
