@@ -40,9 +40,9 @@ public class Fly extends AbstractCommand {
         String status = flightEnabled ? "&aenabled" : "&cdisabled";
 
         if (target.equals(sender)) {
-            ChatUtils.sendMessage(sender, "&eFlight mode " + status + "&e for you.");
+            ChatUtils.sendMessage(sender, "&7Flight mode " + status + "&7 for you.");
         } else {
-            ChatUtils.sendMessage(sender, "&eFlight mode " + status + "&e for " + target.getName() + ".");
+            ChatUtils.sendMessage(sender, "&7Flight mode " + status + "&7 for " + target.getName() + ".");
         }
 
         return true;
@@ -62,7 +62,7 @@ public class Fly extends AbstractCommand {
 
     @Override
     public String getPermission() {
-        return "kernel.command.fly";
+        return "kernel.admin.fly";
     }
 
     @Override

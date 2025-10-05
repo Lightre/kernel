@@ -3,30 +3,34 @@ package com.lightre.kernel.commands.impl;
 import com.lightre.kernel.commands.base.AbstractCommand;
 import com.lightre.kernel.utils.ChatUtils;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.PlayerInventory;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Feed extends AbstractCommand {
+public class Hat extends AbstractCommand {
 
     @Override
     public boolean execute(CommandSender sender, String[] args) {
         Player target;
 
+        // Hedef belirleme mantığı diğer komutlarla aynı.
         if (args.length == 0) {
             if (!(sender instanceof Player)) {
-                ChatUtils.sendMessage(sender, "&cPlease specify a player to feed. Usage: /feed <player>");
+                ChatUtils.sendMessage(sender, "&cPlease specify a player. Usage: /hat <player>");
                 return true;
             }
             target = (Player) sender;
         } else {
             if (!sender.hasPermission(getPermission() + ".others")) {
-                ChatUtils.sendMessage(sender, "&cYou do not have permission to feed other players.");
+                ChatUtils.sendMessage(sender, "&cYou do not have permission to use this command on others.");
                 return true;
             }
             target = Bukkit.getPlayer(args[0]);
@@ -36,34 +40,46 @@ public class Feed extends AbstractCommand {
             }
         }
 
-        feedPlayer(target);
+        // --- ÇEKİRDEK MANTIK ---
+        PlayerInventory inventory = target.getInventory();
+        ItemStack itemInHand = inventory.getItemInMainHand();
 
+        // Guard Clause: Oyuncunun elinde bir eşya var mı?
+        if (itemInHand.getType() == Material.AIR) {
+            ChatUtils.sendMessage(sender, "&cYou must be holding an item to put it on your head.");
+            return true;
+        }
+
+        // Eşyaları takas et: Elindekini kafasına, kafasındakini eline koy.
+        ItemStack itemOnHead = inventory.getHelmet();
+        inventory.setHelmet(itemInHand);
+        inventory.setItemInMainHand(itemOnHead);
+
+        // Geri bildirim mesajı
         if (target.equals(sender)) {
-            ChatUtils.sendMessage(sender, "&aYou have been fed.");
+            ChatUtils.sendMessage(sender, "&aItem placed on your head!");
         } else {
-            ChatUtils.sendMessage(sender, "&aYou have fed " + target.getName() + ".");
+            ChatUtils.sendMessage(sender, "&aYou placed an item on " + target.getName() + "'s head.");
+            ChatUtils.sendMessage(target, "&a" + sender.getName() + " placed an item on your head.");
         }
 
         return true;
     }
 
-    private void feedPlayer(Player player) {
-        player.setFoodLevel(20);
-        player.setSaturation(20.0F);
-    }
-
     @Override
     public String getName() {
-        return "feed";
+        return "hat";
     }
 
     @Override
     public String getPermission() {
-        return "kernel.admin.feed";
+        // Bu komut genellikle admin komutu değildir, bu yüzden 'kernel.command' kullanıyoruz.
+        return "kernel.admin.hat";
     }
 
     @Override
     public List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String alias, @NotNull String[] args) {
+
         if (args.length == 1) {
             return Bukkit.getOnlinePlayers().stream()
                     .map(Player::getName)

@@ -5,6 +5,9 @@ api-version: '1.21'
 authors: [ Lightre ]
 description: A core plugin providing essential commands and features for the server.
 commands:
+  kernel:
+    description: Main command for the Kernel plugin.
+    usage: /<command> [help|reload]
   heal:
     description: Heals a player to full health.
     usage: /<command> [player]
@@ -12,5 +15,18 @@ commands:
     description: Fills a player's hunger bar to maximum.
     usage: /<command> [player]
   fly:
-    description: Toggles flight mode for a player.
+    description: Toggles flight mode.
     usage: /<command> [player]
+  vanish:
+    description: Toggles vanish mode.
+    usage: /<command> [player]
+  god:
+    description: Toggles god mode.
+    usage: /<command> [player]
+  hat:
+    description: Puts the item in your hand on your head.
+    usage: /<command> [player]
+    aliases: [ helmet ]
+  whois:
+    description: Displays detailed information about a player.
+    usage: /<command> <player>

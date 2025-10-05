@@ -75,7 +75,7 @@ public class Heal extends AbstractCommand {
 
     @Override
     public String getPermission() {
-        return "kernel.command.heal";
+        return "kernel.admin.heal";
     }
 
     @Override
