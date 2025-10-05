@@ -92,8 +92,6 @@ Kernel is designed to work seamlessly with:
 | `/equsee <player>`     | Views another player's armors and offhand.    | `kernel.admin.equsee`        |
 | `/endersee [player]`   | Views another player's ender chest.           | `kernel.admin.endersee`      |
 | `/ping [player]`       | Checks connection latency.                    | `kernel.utility.ping`        |
-| `/playtime [player]`   | Shows total playtime.                         | `kernel.utility.playtime`    |
-| `/seen <player>`       | Shows when a player was last online.          | `kernel.utility.seen`        |
 | `/afk`                 | Toggles AFK status.                           | `kernel.utility.afk`         |
 
 </details>
