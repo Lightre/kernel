@@ -38,7 +38,7 @@ public class Whois extends AbstractCommand {
     @Override
     public boolean execute(CommandSender sender, String[] args) {
         if (args.length == 0) {
-            ChatUtils.sendMessage(sender, "&cUsage: /whois <player> [action]");
+            ChatUtils.sendMessage(sender, "&cUsage: /whois <player>");
             return true;
         }
 
@@ -70,7 +70,7 @@ public class Whois extends AbstractCommand {
         long firstPlayedTimestamp = target.getFirstPlayed();
         long playTicks = target.getStatistic(Statistic.PLAY_ONE_MINUTE);
 
-        String healthDisplay = String.format("&a%.1f&7/&a%.1f", target.getHealth(), Objects.requireNonNull(target.getAttribute(Attribute.MAX_HEALTH)).getValue());
+        String healthDisplay = String.format("&f%.1f&7/&f%.1f", target.getHealth(), Objects.requireNonNull(target.getAttribute(Attribute.MAX_HEALTH)).getValue());
         String foodDisplay = String.format("&f%d&7/&f20", target.getFoodLevel());
         String gamemodeDisplay = formatGamemode(target.getGameMode());
         String locationDisplay = String.format("&b%s&7, X:&f%.1f&7, Y:&f%.1f&7, Z:&f%.1f", Objects.requireNonNull(loc.getWorld()).getName(), loc.getX(), loc.getY(), loc.getZ());
@@ -83,7 +83,9 @@ public class Whois extends AbstractCommand {
         sender.sendMessage(ChatUtils.colorize("&8&m----------&r&8[ &6Whois: &e" + name + " &8]&m----------"));
         sendClickableInfo(sender, "UUID", uuid, "Click to copy UUID", ClickEvent.Action.COPY_TO_CLIPBOARD, uuid);
         sendInfoLine(sender, "IP Address", ipAddress);
-        sendInfoLine(sender, "Ping", target.getPing() + "ms");
+        int ping = target.getPing();
+        String pingDisplay = getPingColor(ping) + ping + "ms";
+        sendInfoLine(sender, "Ping", pingDisplay);
         sender.sendMessage("");
         sendInfoLine(sender, "Health", healthDisplay);
         sendInfoLine(sender, "Food", foodDisplay);
@@ -140,6 +142,16 @@ public class Whois extends AbstractCommand {
         long hours = TimeUnit.SECONDS.toHours(seconds) % 24;
         long minutes = TimeUnit.SECONDS.toMinutes(seconds) % 60;
         return String.format("%dd %dh %dm", days, hours, minutes);
+    }
+
+    private String getPingColor(int ping) {
+        if (ping < 50) {
+            return "&a"; // Yeşil (İyi)
+        } else if (ping < 200) {
+            return "&e"; // Sarı (Orta)
+        } else {
+            return "&c"; // Kırmızı (Kötü)
+        }
     }
 
     private String formatGamemode(GameMode gm) {
