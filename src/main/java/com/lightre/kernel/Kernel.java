@@ -1,33 +1,32 @@
 package com.lightre.kernel;
 
+import com.lightre.kernel.commands.base.AbstractCommand;
 import com.lightre.kernel.commands.base.CommandManager;
 import com.lightre.kernel.commands.impl.*;
+import com.lightre.kernel.listeners.*;
+import com.lightre.kernel.managers.*;
 
-import com.lightre.kernel.listeners.PlayerVanishListener;
-import com.lightre.kernel.listeners.PlayerDamageListener;
-
-import com.lightre.kernel.managers.VanishManager;
-import com.lightre.kernel.managers.GodManager;
-
+import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.List;
+import java.util.stream.Stream;
 
 public final class Kernel extends JavaPlugin {
 
-    // Set Managers
     private CommandManager commandManager;
     private VanishManager vanishManager;
     private GodManager godManager;
+    private FreezeManager freezeManager;
 
     @Override
     public void onEnable() {
-        getLogger().info("Kernel has been enabled.");
+        // Plugin'in başlatılma adımlarını sırayla ve temiz bir şekilde çağır.
+        loadManagers();
+        loadCommands();
+        loadListeners();
 
-        // Initialize and set up the command manager
-        this.commandManager = new CommandManager(this);
-        this.vanishManager = new VanishManager(this);
-        this.godManager = new GodManager();
-        registerCommands();
-        registerListeners();
+        getLogger().info("Kernel has been enabled successfully.");
     }
 
     @Override
@@ -35,30 +34,50 @@ public final class Kernel extends JavaPlugin {
         getLogger().info("Kernel has been disabled.");
     }
 
-    // Register Listeners
-    private void registerListeners() {
-        getServer().getPluginManager().registerEvents(new PlayerVanishListener(this), this);
-        getServer().getPluginManager().registerEvents(new PlayerDamageListener(this), this);
+    private void loadManagers() {
+        this.commandManager = new CommandManager(this);
+        this.vanishManager = new VanishManager(this);
+        this.godManager = new GodManager();
+        this.freezeManager = new FreezeManager();
     }
 
-    // Register Commands
-    private void registerCommands() {
-        commandManager.registerCommand(new KernelCommand(this));
-        commandManager.registerCommand(new Heal());
-        commandManager.registerCommand(new Feed());
-        commandManager.registerCommand(new Fly());
-        commandManager.registerCommand(new Vanish(this));
-        commandManager.registerCommand(new God(this));
-        commandManager.registerCommand(new Hat());
-        commandManager.registerCommand(new Whois(this));
+    private void loadCommands() {
+        // Tüm komutları bir stream'de topla ve tek seferde kaydet.
+        // Yeni bir komut eklemek için sadece bu streame eklemen yeterli.
+        Stream.of(
+                new KernelCommand(this),
+                new Heal(),
+                new Feed(),
+                new Fly(),
+                new Vanish(this),
+                new God(this),
+                new Hat(),
+                new Whois(this),
+                new Broadcast(),
+                new AdminChat(),
+                new Freeze(this)
+        ).forEach(commandManager::registerCommand);
     }
 
-    // Managers
+    private void loadListeners() {
+        // Tüm listener'ları bir stream'de topla ve tek seferde kaydet.
+        Stream.of(
+                new PlayerVanishListener(this),
+                new PlayerDamageListener(this),
+                new PlayerFreezeListener(this)
+        ).forEach(listener -> getServer().getPluginManager().registerEvents(listener, this));
+    }
+
+    // Manager Getter'ları
     public VanishManager getVanishManager() {
         return vanishManager;
     }
 
     public GodManager getGodManager() {
         return godManager;
+    }
+
+    public FreezeManager getFreezeManager() {
+        return freezeManager;
     }
 }

@@ -30,3 +30,14 @@ commands:
   whois:
     description: Displays detailed information about a player.
     usage: /<command> <player>
+  broadcast:
+    description: Sends a message to the entire server.
+    usage: /<command> <message>
+    aliases: [ bc ]
+  adminchat:
+    description: Sends a message to admin chat.
+    usage: /<command> <message>
+    aliases: [ ac ]
+  freeze:
+    description: Freezes a player, preventing all actions.
+    usage: /<command> <player>
