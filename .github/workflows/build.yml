@@ -26,13 +26,19 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew build
 
+      - name: Get project version from Gradle
+        id: get_version
+        run: echo "version=$(./gradlew -q printVersion)" >> $GITHUB_OUTPUT
+
       - name: Publish to Modrinth
         uses: Kir-Antipov/mc-publish@v3.3
         with:
           modrinth-id: ${{ secrets.MODRINTH_PROJECT_ID }}
           modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
 
-          name: "Kernel v{{ version }}"
+          name: "Kernel v${{ steps.get_version.outputs.version }}"
+
+          version: ${{ steps.get_version.outputs.version }}
 
           files: "build/libs/*.jar"
           game-versions: "1.21"

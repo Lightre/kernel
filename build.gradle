@@ -57,3 +57,9 @@ tasks {
         minecraftVersion("1.21")
     }
 }
+
+tasks.register('printVersion') {
+    doLast {
+        println project.version
+    }
+}
