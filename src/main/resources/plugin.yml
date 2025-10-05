@@ -41,3 +41,7 @@ commands:
   freeze:
     description: Freezes a player, preventing all actions.
     usage: /<command> <player>
+  clearchat:
+    description: Clears chat for all players.
+    usage: /<command>
+    aliases: [ cc ]

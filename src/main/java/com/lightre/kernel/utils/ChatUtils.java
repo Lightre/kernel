@@ -1,5 +1,6 @@
 package com.lightre.kernel.utils;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
@@ -29,5 +30,10 @@ public class ChatUtils {
         // Prefix, bir boşluk ve mesajı birleştirip renklendiriyoruz.
         String finalMessage = colorize(PREFIX + " &r" + message);
         sender.sendMessage(finalMessage);
+    }
+
+    public static void broadcastMessage(String message) {
+        String finalMessage = colorize(PREFIX + " &r" + message);
+        Bukkit.broadcastMessage(finalMessage);
     }
 }

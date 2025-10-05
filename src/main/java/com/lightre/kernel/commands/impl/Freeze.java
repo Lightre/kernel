@@ -37,12 +37,11 @@ public class Freeze extends AbstractCommand {
         boolean isNowFrozen = plugin.getFreezeManager().toggleFreeze(target);
         String status = isNowFrozen ? "&bfrozen" : "&aunfrozen";
 
-        // Hedef oyuncuya her zaman bildirim gönder.
-        ChatUtils.sendMessage(target, "&cYou have been " + status + " by " + sender.getName() + ".");
-
         // Komutu kullanan kişiye geri bildirim gönder.
-        if (!target.equals(sender)) {
-            ChatUtils.sendMessage(sender, "&eYou have " + status + " " + target.getName() + ".");
+        if (target.equals(sender)) {
+            ChatUtils.sendMessage(sender, "&eYou have been " + status + ".");
+        } else {
+            ChatUtils.sendMessage(sender, "&cYou have " + status + target.getName() + ".");
         }
 
         return true;
