@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: kir-sh/actions-checkout-and-git-info@v1.1.0
 
       - name: Set up JDK 21
         uses: actions/setup-java@v4
@@ -29,8 +29,8 @@ jobs:
           modrinth-id: ${{ secrets.MODRINTH_PROJECT_ID }}
           modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
 
-          name: "${{ project.name }} v${{ project.version }}"
-
+          name: "v{{ version }}"
+          version-number: "{{ version }}"
           files: "build/libs/*.jar"
           game-versions: "1.21"
           loaders: "spigot, paper"
