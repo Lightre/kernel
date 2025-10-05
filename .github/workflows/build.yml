@@ -34,7 +34,7 @@ jobs:
           modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
 
           name: "v{{ version }}"
-          version-number: "{{ version }}"
+          version: "{{ version }}"
 
           files: "build/libs/*.jar"
           game-versions: "1.21"
