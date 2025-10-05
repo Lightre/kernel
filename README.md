@@ -89,11 +89,11 @@ Kernel is designed to work seamlessly with:
 | `/freeze [player]`      | Freezes a player, preventing all actions.     | `kernel.admin.freeze`        |
 | `/clearchat`            | Clears chat for all players.                  | `kernel.admin.clearchat`     |
 | `/speed <fly\|walk> <>` | Changes a player's walk or fly speed.         | `kernel.admin.speed`         |
-| `/repair`               | REPAIR TEXT                                   | `kernel.admin.clearchat`     |
+| `/repair`               | Repairs the item in your hand.                | `kernel.admin.repair`        |
+
 | `/invsee <player>`      | Views another player's inventory.             | `kernel.admin.invsee`        |
 | `/equsee <player>`      | Views another player's armors and offhand.    | `kernel.admin.equsee`        |
 | `/endersee [player]`    | Views another player's ender chest.           | `kernel.admin.endersee`      |
-| `/ping [player]`        | Checks connection latency.                    | `kernel.utility.ping`        |
 | `/afk`                  | Toggles AFK status.                           | `kernel.utility.afk`         |
 
 </details>

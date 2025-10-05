@@ -57,7 +57,10 @@ public final class Kernel extends JavaPlugin {
                 new AdminChat(),
                 new Freeze(this),
                 new ClearChat(),
-                new Speed()
+                new Speed(),
+                new Repair(),
+                new Craft(),
+                new EnderChest()
         ).forEach(commandManager::registerCommand);
     }
 
