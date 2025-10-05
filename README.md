@@ -8,7 +8,8 @@
 
 # Kernel
 
-**A powerful core plugin delivering essential commands and critical features to ensure a smooth and stable server experience.**
+**A powerful core plugin delivering essential commands and critical features to ensure a smooth and stable server
+experience.**
 
 ![Minecraft Version][minecraft_version_img]
 ![Downloads][downloads_img]
@@ -32,7 +33,8 @@
 
 ## 📦 Installation
 
-1. Download the latest release from [Modrinth](https://modrinth.com/project/kernel#download) or [GitHub Releases][releases_url].
+1. Download the latest release from [Modrinth](https://modrinth.com/project/kernel#download)
+   or [GitHub Releases][releases_url].
 2. Drop the `.jar` file into your server’s `plugins/` folder.
 3. Reload the server and configure as needed.
 
@@ -48,6 +50,7 @@ Kernel comes with a simple and clean config file located at:
 ```yaml
 ## Kernel Configuration
 ```
+
 </details>
 
 > You can adjust permissions, enable/disable features, and more.
@@ -66,10 +69,23 @@ Kernel is designed to work seamlessly with:
 
 ## 🛠️ Commands & Permissions
 
-| Command          | Description            | Permission            |
-| ---------------- | ---------------------- | --------------------- |
-| `/kernel`        | Main command info/help | `kernel.command`      |
-| `/kernel reload` | Reloads configuration  | `kernel.admin.reload` |
+<details>
+<summary>Commands & Permissions</summary>
+
+| Command            | Description                                   | Permission                   |
+|--------------------|-----------------------------------------------|------------------------------|
+| `/kernel`          | Main command info/help.                       | `kernel.command.main`        |
+| `/kernel help`     | Commands list.                                | `kernel.command.main.help`   |
+| `/kernel reload`   | Reloads configuration.                        | `kernel.command.main.reload` |
+| `/heal [player]`   | Heals a player to full health.                | `kernel.admin.heal`          |
+| `/feed [player]`   | Fills a player's hunger to max.               | `kernel.admin.feed`          |
+| `/fly [player]`    | Toggles flight mode.                          | `kernel.admin.fly`           |
+| `/vanish [player]` | Toggles vanish mode.                          | `kernel.admin.vanish`        |
+| `/god [player]`    | Toggles god mode.                             | `kernel.admin.god`           |
+| `/hat [player]`    | Puts the item in your hand on your head.      | `kernel.admin.hat`           |
+| `/whois <player>`  | Displays detailed information about a player. | `kernel.admin.whois`         |
+
+</details>
 
 ---
 
@@ -80,8 +96,13 @@ This project is licensed under the [All Rights Reserved license][repo_license_ur
 ---
 
 [downloads_img]: https://img.shields.io/modrinth/dt/kernel?color=default
+
 [releases_img]: https://img.shields.io/github/v/release/Lightre/kernel?color=aqua
+
 [releases_url]: https://github.com/Lightre/kernel/releases
+
 [repo_license_img]: https://img.shields.io/badge/license-ARR-yellow.svg
+
 [repo_license_url]: https://github.com/Lightre/kernel/blob/main/LICENSE
+
 [minecraft_version_img]: https://img.shields.io/badge/minecraft-1.21x-green.svg
