@@ -1,8 +1,9 @@
 package com.lightre.kernel;
 
 import com.lightre.kernel.commands.base.CommandManager;
-import com.lightre.kernel.commands.impl.Feed;
 import com.lightre.kernel.commands.impl.Heal;
+import com.lightre.kernel.commands.impl.Feed;
+import com.lightre.kernel.commands.impl.Fly;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Kernel extends JavaPlugin {
@@ -26,6 +27,6 @@ public final class Kernel extends JavaPlugin {
     private void registerCommands() {
         commandManager.registerCommand(new Heal());
         commandManager.registerCommand(new Feed());
-        // commandManager.registerCommand(new Fly());
+        commandManager.registerCommand(new Fly());
     }
 }

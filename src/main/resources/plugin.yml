@@ -11,3 +11,6 @@ commands:
   feed:
     description: Fills a player's hunger bar to maximum.
     usage: /<command> [player]
+  fly:
+    description: Toggles flight mode for a player.
+    usage: /<command> [player]
