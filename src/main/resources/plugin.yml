@@ -45,3 +45,6 @@ commands:
     description: Clears chat for all players.
     usage: /<command>
     aliases: [ cc ]
+  speed:
+    description: Changes a player's walk or fly speed.
+    usage: /<command> <walk|fly> <0-10> [player]

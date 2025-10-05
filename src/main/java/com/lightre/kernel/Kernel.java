@@ -56,7 +56,8 @@ public final class Kernel extends JavaPlugin {
                 new Broadcast(),
                 new AdminChat(),
                 new Freeze(this),
-                new ClearChat()
+                new ClearChat(),
+                new Speed()
         ).forEach(commandManager::registerCommand);
     }
 
