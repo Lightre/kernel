@@ -7,7 +7,6 @@ jobs:
   build_and_release:
     name: Build & Release
     runs-on: ubuntu-latest
-
     permissions:
       contents: write
 
@@ -33,8 +32,7 @@ jobs:
           modrinth-id: ${{ secrets.MODRINTH_PROJECT_ID }}
           modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
 
-          name: "v{{ version }}"
-          version: "{{ version }}"
+          name: "Kernel v{{ version }}"
 
           files: "build/libs/*.jar"
           game-versions: "1.21"
