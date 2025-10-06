@@ -1,15 +1,12 @@
 package com.lightre.kernel;
 
-import com.lightre.kernel.commands.base.AbstractCommand;
 import com.lightre.kernel.commands.base.CommandManager;
 import com.lightre.kernel.commands.impl.*;
 import com.lightre.kernel.listeners.*;
 import com.lightre.kernel.managers.*;
 
-import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.List;
 import java.util.stream.Stream;
 
 public final class Kernel extends JavaPlugin {
@@ -65,8 +62,8 @@ public final class Kernel extends JavaPlugin {
     private void loadListeners() {
         Stream.of(
                 new PlayerVanishListener(this),
-                new PlayerDamageListener(this),
-                new PlayerFreezeListener(this)
+                new PlayerFreezeListener(this),
+                new GodModeListener(this)
         ).forEach(listener -> getServer().getPluginManager().registerEvents(listener, this));
     }
 
@@ -74,11 +71,11 @@ public final class Kernel extends JavaPlugin {
         return vanishManager;
     }
 
-    public GodManager getGodManager() {
-        return godManager;
-    }
-
     public FreezeManager getFreezeManager() {
         return freezeManager;
+    }
+
+    public GodManager getGodManager() {
+        return godManager;
     }
 }
