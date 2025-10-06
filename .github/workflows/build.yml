@@ -41,6 +41,6 @@ jobs:
           version: ${{ steps.get_version.outputs.version }}
 
           files: "build/libs/*.jar"
-          game-versions: "1.21"
+          game-versions: ">=1.21"
           loaders: "spigot, paper"
           version-type: "release"
