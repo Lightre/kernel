@@ -1,8 +1,12 @@
 package com.lightre.kernel.managers;
 
+import org.bukkit.attribute.Attribute;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.Mob;
 import org.bukkit.entity.Player;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 
@@ -14,18 +18,25 @@ public class GodManager {
         return godPlayers.contains(player.getUniqueId());
     }
 
-    /**
-     * Toggles the god mode for a player.
-     * @param player The player whose god mode to toggle.
-     * @return The new god mode state (true if enabled, false if disabled).
-     */
     public boolean toggleGod(Player player) {
         if (isGod(player)) {
             godPlayers.remove(player.getUniqueId());
-            return false; // God mode is now disabled.
+            return false;
         } else {
             godPlayers.add(player.getUniqueId());
-            return true; // God mode is now enabled.
+            clearExistingTargets(player);
+
+            return true;
+        }
+    }
+
+    private void clearExistingTargets(Player player) {
+        for (Entity entity : player.getNearbyEntities(100, 100, 100)) {
+            if (entity instanceof Mob mob) {
+                if (player.equals(mob.getTarget())) {
+                    mob.setTarget(null);
+                }
+            }
         }
     }
 }
