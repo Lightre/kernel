@@ -43,7 +43,6 @@ public class God extends AbstractCommand {
             }
         }
 
-        // Ana mantık: GodManager'ı kullanarak durumu tersine çevir.
         boolean isNowGod = plugin.getGodManager().toggleGod(target);
         String status = isNowGod ? "&aenabled" : "&cdisabled";
 

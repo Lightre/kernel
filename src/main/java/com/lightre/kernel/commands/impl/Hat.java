@@ -21,7 +21,6 @@ public class Hat extends AbstractCommand {
     public boolean execute(CommandSender sender, String[] args) {
         Player target;
 
-        // Hedef belirleme mantığı diğer komutlarla aynı.
         if (args.length == 0) {
             if (!(sender instanceof Player)) {
                 ChatUtils.sendMessage(sender, "&cPlease specify a player. Usage: /hat <player>");
@@ -40,22 +39,18 @@ public class Hat extends AbstractCommand {
             }
         }
 
-        // --- ÇEKİRDEK MANTIK ---
         PlayerInventory inventory = target.getInventory();
         ItemStack itemInHand = inventory.getItemInMainHand();
 
-        // Guard Clause: Oyuncunun elinde bir eşya var mı?
         if (itemInHand.getType() == Material.AIR) {
             ChatUtils.sendMessage(sender, "&cYou must be holding an item to put it on your head.");
             return true;
         }
 
-        // Eşyaları takas et: Elindekini kafasına, kafasındakini eline koy.
         ItemStack itemOnHead = inventory.getHelmet();
         inventory.setHelmet(itemInHand);
         inventory.setItemInMainHand(itemOnHead);
 
-        // Geri bildirim mesajı
         if (target.equals(sender)) {
             ChatUtils.sendMessage(sender, "&aItem placed on your head!");
         } else {
@@ -73,7 +68,6 @@ public class Hat extends AbstractCommand {
 
     @Override
     public String getPermission() {
-        // Bu komut genellikle admin komutu değildir, bu yüzden 'kernel.command' kullanıyoruz.
         return "kernel.admin.hat";
     }
 

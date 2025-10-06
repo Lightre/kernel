@@ -43,7 +43,6 @@ public class Vanish extends AbstractCommand {
             }
         }
 
-        // Ana mantık: VanishManager'ı kullanarak durumu tersine çevir.
         boolean isNowVanished = !plugin.getVanishManager().isVanished(target);
         plugin.getVanishManager().setVanished(target, isNowVanished);
 
@@ -52,10 +51,7 @@ public class Vanish extends AbstractCommand {
         if (target.equals(sender)) {
             ChatUtils.sendMessage(sender, "&7Vanish mode " + status + "&7 for you.");
         } else {
-            // Başkasını vanish'e alan kişiye her zaman mesaj gönderilir.
             ChatUtils.sendMessage(sender, "&7Vanish mode " + status + "&7 for " + target.getName() + ".");
-            // Hedef oyuncu vanish'e ALINDIYSA ona mesaj GÖNDERİLMEZ, çünkü amacı gizlenmektir.
-            // Sadece vanish'ten ÇIKARILDIYSA haberi olur.
             if (!isNowVanished) {
                 ChatUtils.sendMessage(target, "&eVanish mode " + status + "&e for you by " + sender.getName() + ".");
             }

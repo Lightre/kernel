@@ -146,11 +146,11 @@ public class Whois extends AbstractCommand {
 
     private String getPingColor(int ping) {
         if (ping < 50) {
-            return "&a"; // Yeşil (İyi)
+            return "&a"; // Good
         } else if (ping < 200) {
-            return "&e"; // Sarı (Orta)
+            return "&e"; // Hmm
         } else {
-            return "&c"; // Kırmızı (Kötü)
+            return "&c"; // Bad
         }
     }
 

@@ -4,9 +4,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
-/**
- * A utility class for chat-related functions, such as colorizing messages and sending prefixed messages.
- */
 public class ChatUtils {
 
     public static final String PREFIX = "&b&lKernel &7»";
@@ -24,10 +21,9 @@ public class ChatUtils {
      * Sends a prefixed and colorized message to a CommandSender.
      * This is the primary method to be used for all plugin messages.
      * @param sender The recipient of the message (player or console).
-     * @param message The message content (without the prefix).
+     * @param message The message content (without the prefix) -Lightre
      */
     public static void sendMessage(CommandSender sender, String message) {
-        // Prefix, bir boşluk ve mesajı birleştirip renklendiriyoruz.
         String finalMessage = colorize(PREFIX + " &r" + message);
         sender.sendMessage(finalMessage);
     }

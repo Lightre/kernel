@@ -6,10 +6,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-/**
- * Represents the contract for any command in this plugin.
- * Defines the essential methods that every command must have.
- */
 public interface ICommand {
 
     /**

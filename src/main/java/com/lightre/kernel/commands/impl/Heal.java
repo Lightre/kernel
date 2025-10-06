@@ -20,21 +20,17 @@ public class Heal extends AbstractCommand {
     public boolean execute(CommandSender sender, String[] args) {
         Player target;
 
-        // --- Guard Clauses & Logic to determine the target ---
         if (args.length == 0) {
-            // Guard Clause 1: Check if sender is a player for self-healing
             if (!(sender instanceof Player)) {
                 ChatUtils.sendMessage(sender, "&cPlease specify a player to heal. Usage: /heal <player>");
                 return true;
             }
             target = (Player) sender;
         } else {
-            // Guard Clause 2: Check for permission to heal others
             if (!sender.hasPermission(getPermission() + ".others")) {
                 ChatUtils.sendMessage(sender, "&cYou do not have permission to heal other players.");
                 return true;
             }
-            // Guard Clause 3: Check if target player is valid
             target = Bukkit.getPlayer(args[0]);
             if (target == null || !target.isOnline()) {
                 ChatUtils.sendMessage(sender, "&cPlayer '" + args[0] + "' not found.");
@@ -44,12 +40,9 @@ public class Heal extends AbstractCommand {
 
         healPlayer(target);
 
-        // --- Feedback Messages ---
         if (target.equals(sender)) {
-            // Message for self-healing
             ChatUtils.sendMessage(sender, "&aYou have been healed.");
         } else {
-            // Messages for healing others
             ChatUtils.sendMessage(sender, "&aYou have healed " + target.getName() + ".");
         }
 

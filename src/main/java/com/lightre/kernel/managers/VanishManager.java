@@ -1,7 +1,7 @@
 package com.lightre.kernel.managers;
 
 import com.lightre.kernel.Kernel;
-import com.lightre.kernel.utils.ChatUtils; // YENİ IMPORT
+import com.lightre.kernel.utils.ChatUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -23,7 +23,6 @@ public class VanishManager {
         return vanishedPlayers.contains(player.getUniqueId());
     }
 
-    // DEĞİŞEN METOT
     public void setVanished(Player player, boolean vanish) {
         if (vanish) {
             vanishedPlayers.add(player.getUniqueId());
@@ -32,14 +31,11 @@ public class VanishManager {
             vanishedPlayers.remove(player.getUniqueId());
             showPlayer(player);
         }
-        // YENİ EKLENEN SATIR:
-        // Oyuncunun vanish durumu ne olursa olsun, tab listesindeki adını güncelle.
         updatePlayerListName(player);
     }
 
     public void hidePlayer(Player playerToHide) {
         for (Player observer : Bukkit.getOnlinePlayers()) {
-            // Eğer gözlemcinin bypass yetkisi YOKSA ve kendine bakmıyorsa, gizle.
             if (!observer.hasPermission(bypassPermission) && !observer.equals(playerToHide)) {
                 observer.hidePlayer(plugin, playerToHide);
             }
@@ -65,7 +61,6 @@ public class VanishManager {
         }
     }
 
-    // YENİ YARDIMCI METOT
     /**
      * Updates the player's display name in the tab list based on their vanish status.
      * Adds a [Vanish] prefix if vanished, otherwise resets to default.
@@ -73,12 +68,9 @@ public class VanishManager {
      */
     private void updatePlayerListName(Player player) {
         if (isVanished(player)) {
-            // Oyuncu vanishli ise, isminin başına [Vanish] ön ekini ekle.
             String prefix = ChatUtils.colorize("&7[Vanish] &r");
             player.setPlayerListName(prefix + player.getName());
         } else {
-            // Oyuncu vanishli değilse, ismini varsayılan haline geri döndür.
-            // 'null' göndermek, Bukkit'in oyuncunun normal adını kullanmasını sağlar.
             player.setPlayerListName(null);
         }
     }

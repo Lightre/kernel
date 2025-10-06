@@ -37,7 +37,6 @@ public class Freeze extends AbstractCommand {
         boolean isNowFrozen = plugin.getFreezeManager().toggleFreeze(target);
         String status = isNowFrozen ? "&bfrozen" : "&aunfrozen";
 
-        // Komutu kullanan kişiye geri bildirim gönder.
         if (target.equals(sender)) {
             ChatUtils.sendMessage(sender, "&eYou have been " + status + ".");
         } else {

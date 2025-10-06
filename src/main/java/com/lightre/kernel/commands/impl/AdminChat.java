@@ -23,15 +23,12 @@ public class AdminChat extends AbstractCommand {
         String format = "&4&l[AC] &c" + senderName + " &7» &r" + message;
         String formattedMessage = ChatUtils.colorize(format);
 
-        // Sunucudaki tüm online oyuncuları döngüye al
         for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
-            // Eğer oyuncunun mesajı görme yetkisi varsa, mesajı ona gönder
             if (onlinePlayer.hasPermission(chatPermission)) {
                 onlinePlayer.sendMessage(formattedMessage);
             }
         }
 
-        // Mesajı konsola da gönder, çünkü konsol her zaman yetkilidir.
         Bukkit.getConsoleSender().sendMessage(formattedMessage);
 
         return true;
@@ -44,9 +41,6 @@ public class AdminChat extends AbstractCommand {
 
     @Override
     public String getPermission() {
-        // Bu, komutu kullanma (mesaj gönderme) yetkisidir.
         return "kernel.admin.adminchat.send";
     }
-
-    // Bu komut serbest metin aldığı için onTabComplete'e gerek yok.
 }

@@ -38,10 +38,8 @@ public class Invsee extends AbstractCommand {
             return true;
         }
 
-        // KOPYA OLUŞTURMAK YERİNE, DOĞRUDAN HEDEFİN ENVANTERİNİ ALIYORUZ.
         Inventory targetInventory = target.getInventory();
 
-        // VE HEDEFİN GERÇEK ENVANTERİNİ GÖRÜNTÜLEYİCİYE AÇIYORUZ.
         viewer.openInventory(targetInventory);
 
         return true;
