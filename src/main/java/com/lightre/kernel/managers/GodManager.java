@@ -25,10 +25,6 @@ public class GodManager {
             return false; // God mode is now disabled.
         } else {
             godPlayers.add(player.getUniqueId());
-            // God moduna girince canını ve açlığını da doldurmak güzel bir jest olur.
-            player.setHealth(player.getAttribute(org.bukkit.attribute.Attribute.MAX_HEALTH).getValue());
-            player.setFoodLevel(20);
-            player.setSaturation(20.0F);
             return true; // God mode is now enabled.
         }
     }
