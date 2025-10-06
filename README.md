@@ -72,29 +72,27 @@ Kernel is designed to work seamlessly with:
 <details>
 <summary>Commands & Permissions</summary>
 
-| Command                 | Description                                   | Permission                   |
-|-------------------------|-----------------------------------------------|------------------------------|
-| `/kernel`               | Main command info/help.                       | `kernel.command.main`        |
-| `/kernel help`          | Commands list.                                | `kernel.command.main.help`   |
-| `/kernel reload`        | Reloads configuration.                        | `kernel.command.main.reload` |
-| `/heal [player]`        | Heals a player to full health.                | `kernel.admin.heal`          |
-| `/feed [player]`        | Fills a player's hunger to max.               | `kernel.admin.feed`          |
-| `/fly [player]`         | Toggles flight mode.                          | `kernel.admin.fly`           |
-| `/vanish [player]`      | Toggles vanish mode.                          | `kernel.admin.vanish`        |
-| `/god [player]`         | Toggles god mode.                             | `kernel.admin.god`           |
-| `/hat [player]`         | Puts the item in your hand on your head.      | `kernel.admin.hat`           |
-| `/whois <player>`       | Displays detailed information about a player. | `kernel.admin.whois`         |
-| `/broadcast <message>`  | Sends a message to the entire server.         | `kernel.admin.broadcast`     |
-| `/adminchat <msg>`      | Sends a message to admin chat.                | `kernel.admin.adminchat`     |
-| `/freeze [player]`      | Freezes a player, preventing all actions.     | `kernel.admin.freeze`        |
-| `/clearchat`            | Clears chat for all players.                  | `kernel.admin.clearchat`     |
-| `/speed <fly\|walk> <>` | Changes a player's walk or fly speed.         | `kernel.admin.speed`         |
-| `/repair`               | Repairs the item in your hand.                | `kernel.admin.repair`        |
-
-| `/invsee <player>`      | Views another player's inventory.             | `kernel.admin.invsee`        |
-| `/equsee <player>`      | Views another player's armors and offhand.    | `kernel.admin.equsee`        |
-| `/endersee [player]`    | Views another player's ender chest.           | `kernel.admin.endersee`      |
-| `/afk`                  | Toggles AFK status.                           | `kernel.utility.afk`         |
+| Command                     | Description                                   | Permission                   |
+|-----------------------------|-----------------------------------------------|------------------------------|
+| `/kernel`                   | Main command info/help.                       | `kernel.command.main`        |
+| `/kernel help`              | Commands list.                                | `kernel.command.main.help`   |
+| `/kernel reload`            | Reloads configuration.                        | `kernel.command.main.reload` |
+| `/heal [player]`            | Heals a player to full health.                | `kernel.admin.heal`          |
+| `/feed [player]`            | Fills a player's hunger to max.               | `kernel.admin.feed`          |
+| `/fly [player]`             | Toggles flight mode.                          | `kernel.admin.fly`           |
+| `/vanish [player]`          | Toggles vanish mode.                          | `kernel.admin.vanish`        |
+| `/god [player]`             | Toggles god mode.                             | `kernel.admin.god`           |
+| `/hat [player]`             | Puts the item in your hand on your head.      | `kernel.admin.hat`           |
+| `/whois <player>`           | Displays detailed information about a player. | `kernel.admin.whois`         |
+| `/broadcast <message>`      | Sends a message to the entire server.         | `kernel.admin.broadcast`     |
+| `/adminchat <msg>`          | Sends a message to admin chat.                | `kernel.admin.adminchat`     |
+| `/freeze [player]`          | Freezes a player, preventing all actions.     | `kernel.admin.freeze`        |
+| `/clearchat`                | Clears chat for all players.                  | `kernel.admin.clearchat`     |
+| `/speed <walk\|fly> <0-10>` | Changes a player's walk or fly speed.         | `kernel.admin.speed`         |
+| `/repair`                   | Repairs the item in your hand.                | `kernel.admin.repair`        |
+| `/enderchest [player]`      | Opens your ender chest.                       | `kernel.admin.enderchest`    |
+| `/invsee <player>`          | Views another player's inventory.             | `kernel.admin.invsee`        |
+| `/equsee <player>`          | Views another player's armors and offhand.    | `kernel.admin.equsee`        |
 
 </details>
 
