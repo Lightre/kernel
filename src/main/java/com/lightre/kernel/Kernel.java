@@ -21,7 +21,6 @@ public final class Kernel extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        // Plugin'in başlatılma adımlarını sırayla ve temiz bir şekilde çağır.
         loadManagers();
         loadCommands();
         loadListeners();
@@ -42,8 +41,6 @@ public final class Kernel extends JavaPlugin {
     }
 
     private void loadCommands() {
-        // Tüm komutları bir stream'de topla ve tek seferde kaydet.
-        // Yeni bir komut eklemek için sadece bu streame eklemen yeterli.
         Stream.of(
                 new KernelCommand(this),
                 new Heal(),
@@ -59,13 +56,13 @@ public final class Kernel extends JavaPlugin {
                 new ClearChat(),
                 new Speed(),
                 new Repair(),
-                new Craft(),
-                new EnderChest()
+                new EnderChest(),
+                new Invsee(),
+                new Equsee()
         ).forEach(commandManager::registerCommand);
     }
 
     private void loadListeners() {
-        // Tüm listener'ları bir stream'de topla ve tek seferde kaydet.
         Stream.of(
                 new PlayerVanishListener(this),
                 new PlayerDamageListener(this),
@@ -73,7 +70,6 @@ public final class Kernel extends JavaPlugin {
         ).forEach(listener -> getServer().getPluginManager().registerEvents(listener, this));
     }
 
-    // Manager Getter'ları
     public VanishManager getVanishManager() {
         return vanishManager;
     }
