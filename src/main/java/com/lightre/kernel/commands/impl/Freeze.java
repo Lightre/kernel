@@ -38,9 +38,9 @@ public class Freeze extends AbstractCommand {
         String status = isNowFrozen ? "&bfrozen" : "&aunfrozen";
 
         if (target.equals(sender)) {
-            ChatUtils.sendMessage(sender, "&eYou have been " + status + ".");
+            ChatUtils.sendMessage(sender, "&7You have been " + status + ".");
         } else {
-            ChatUtils.sendMessage(sender, "&cYou have " + status + target.getName() + ".");
+            ChatUtils.sendMessage(sender, "&7You have " + status + target.getName() + ".");
         }
 
         return true;
