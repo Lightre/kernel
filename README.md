@@ -1,6 +1,6 @@
 <div align="center">
 
-<a href="https://modrinth.com/plugin/kernel/" target="_blank" title="Kernel on Modrinth">
+<a href="https://modrinth.com/plugin/kernel/" target="_blank" title="Icon made by Iconriver from www.flaticon.com">
   <img width="160px" alt="Kernel Icon" src="https://cdn.modrinth.com/data/cached_images/86832cb77c5fbd391f7c7018f3e8369baf08ed9c.png">
 </a>
 
@@ -61,7 +61,7 @@ Kernel is designed to work seamlessly with:
 |-----------------------------|-----------------------------------------------|------------------------------|
 | `/kernel`                   | Main command info/help.                       | `kernel.command.main`        |
 | `/kernel help`              | Commands list.                                | `kernel.command.main.help`   |
-| `/kernel reload`            | Reloads configuration.                        | `kernel.command.main.reload` |
+| `/kernel reload` (N/A)      | Reloads configuration.                        | `kernel.command.main.reload` |
 | `/heal [player]`            | Heals a player to full health.                | `kernel.admin.heal`          |
 | `/feed [player]`            | Fills a player's hunger to max.               | `kernel.admin.feed`          |
 | `/fly [player]`             | Toggles flight mode.                          | `kernel.admin.fly`           |
