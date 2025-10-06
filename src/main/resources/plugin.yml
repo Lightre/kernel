@@ -51,11 +51,13 @@ commands:
   repair:
     description: Repairs the item currently in your hand.
     usage: /<command>
-  craft:
-    description: Opens a virtual crafting table.
-    usage: /<command>
-    aliases: [ workbench, wb ]
   enderchest:
     description: Opens your ender chest.
     usage: /<command> [player]
     aliases: [ echest, ec ]
+  invsee:
+    description: Views another player's inventory.
+    usage: /<command> <player>
+  equsee:
+    description: Views another player's armors and offhand.
+    usage: /<command> <player>
