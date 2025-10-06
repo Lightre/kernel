@@ -38,21 +38,6 @@ experience.**
 2. Drop the `.jar` file into your server’s `plugins/` folder.
 3. Reload the server and configure as needed.
 
----
-
-## 📁 Configuration
-
-Kernel comes with a simple and clean config file located at:
-
-<details>
-<summary>/plugins/Kernel/config.yml</summary>
-
-```yaml
-## Kernel Configuration
-```
-
-</details>
-
 > You can adjust permissions, enable/disable features, and more.
 
 ---
