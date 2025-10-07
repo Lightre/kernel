@@ -89,9 +89,9 @@ This project is licensed under the [All Rights Reserved license][repo_license_ur
 
 ---
 
-[downloads_img]: https://img.shields.io/modrinth/dt/kernel?color=default
+[downloads_img]: https://img.shields.io/modrinth/dt/kernel?color=default&logo=modrinth
 
-[releases_img]: https://img.shields.io/github/v/release/Lightre/kernel?color=aqua
+[releases_img]: https://img.shields.io/github/v/release/Lightre/kernel?color=aqua&logo=github
 
 [releases_url]: https://github.com/Lightre/kernel/releases
 
