@@ -86,7 +86,7 @@ public class Speed extends AbstractCommand {
 
     @Override
     public String getPermission() {
-        return "kernel.utility.speed";
+        return "kernel.admin.speed";
     }
 
     @Override
